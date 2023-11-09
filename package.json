@@ -18,5 +18,6 @@
   "main": "app.js",
   "author": "",
   "license": "ISC",
-  "description": "i like to play cricket\r [render link](https://f23wb68depa.onrender.com)\r myclass=snake my attributes are \r snake_color:(String) \r snake_breed:(String) \r snake_price:(Number)"
+  "description": "i like to play cricket\r [render link](https://f23wb68depa.onrender.com)\r myclass=snake my attributes are \r snake_color:(String) \r snake_breed:(String) \r snake_price:(Number)",
+  "devDependencies": {}
 }

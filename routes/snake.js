@@ -1,7 +1,6 @@
 var express = require('express');
+const snake_controlers= require('../controllers/snake');
 var router = express.Router();
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('snake', { title: 'Search Results snake' });
-});
+/* GET snakes */
+router.get('/', snake_controlers.snake_view_all_Page );
 module.exports = router;

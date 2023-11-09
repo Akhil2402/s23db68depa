@@ -1,25 +1,12 @@
 extends layout
+
 block content
-    div(class="container-fluid")
-        h1= title
-    - let results=[{snake_color:"brown",snake_breed:"Flemish snake",snake_price:200000},{snake_color:"white",snake_breed:"Angora snake",snake_price:5600},{snake_color:"black",snake_breed:"black snake",snake_price:50000}]
-        div(class="row")
-            each form,item in results
-                div(class = "col-sm-2 bg-primary" onclick=`buy(${item})`) #{form.snake_color}             
-                div(class = "col-sm-2 bg-primary" onclick=`buy(${item})`) #{form.snake_breed}                
-                div(class = "col-sm-2 bg-primary" onclick=`buy(${item})`) #{form.snake_price}
-                hr
-    
-    br
-    h5= 'buy'
+  h1= title
 
-    div(class="container-fluid")
-      each snake,index in results
-        div(class="row", onclick=`buy(${index})`)
-          div(class="col-sm-2") <br>snake #{index}: #{snake.snake_color} breed:#{snake.snake_breed} price:#{snake.snake_price}
-
-    script.
-        function buy(itemNo)
-        {
-            alert(`You purchased Item ${itemNo+1}`)
-        }
+  .row
+    each snakes in results
+      .col-3 
+        ul
+          li snakes color : #{snakes.snake_color}
+          li snakes breed : #{snakes.snake_breed}
+          li snakes price : #{snakes.snake_price}
