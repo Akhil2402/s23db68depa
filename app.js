@@ -20,44 +20,32 @@ var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 
 var app = express();
-async function recreateDB() {
+async function recreateDB(){
   // Delete everything
   await snake.deleteMany();
-
-  const instance1 = new snake({
-    snake_color: "brown",
-    snake_breed: "Flemish snake",
-    snake_price: 200000
-  });
-  const instance2 = new snake({
-    snake_color: "white",
-    snake_breed: "Angora snake",
-    snake_price: 5600
-  });
-  const instance3 = new snake({
-    snake_color: "black",
-    snake_breed: "black snake",
-    snake_price: 50000
-  });
-
-  instance1.save().then(doc => {
-    console.log("First object saved");
-  }).catch(err => {
-    console.error(err);
-  });
-
-  instance2.save().then(doc => {
-    console.log("Second object saved");
-  }).catch(err => {
-    console.error(err);
-  });
-
-  instance3.save().then(doc => {
-    console.log("Third object saved");
-  }).catch(err => {
-    console.error(err);
-  });
-} let reseed = true;
+  let instance1 = new
+  snake({snake_color:"brown",snake_breed:"Flemish snake",snake_price:200000});
+  let instance2 = new
+  snake({snake_color:"white",snake_breed:"Angora snake",snake_price:5600});
+  let instance3 = new
+  snake({snake_color:"black",snake_breed:"black snake",snake_price:50000});
+  instance1.save().then(doc=>{
+    console.log("First object saved")}
+    ).catch(err=>{
+    console.error(err)
+    });
+    instance2.save().then(doc=>{
+      console.log("Second object saved")}
+      ).catch(err=>{
+      console.error(err)
+      });
+      instance3.save().then(doc=>{
+        console.log("Third object saved")}
+        ).catch(err=>{
+        console.error(err)
+        });
+ }
+ let reseed = true;
  if (reseed) { recreateDB();}
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
