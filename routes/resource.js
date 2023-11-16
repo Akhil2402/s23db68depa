@@ -18,6 +18,7 @@ router.get('/snakes/:id', snake_controller.snake_detail);
 // GET request for list of all snake items.
 router.get('/snakes', snake_controller.snake_list);
 module.exports = router;
+/*
 //Handle snake update form on PUT.
 exports.snake_update_put = async function(req, res) {
 console.log(`update on id ${req.params.id} with body
@@ -38,3 +39,4 @@ res.send(`{"error": ${err}: Update for id ${req.params.id}
 failed`);
 }
 };
+*/

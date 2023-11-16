@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  h1= title
+
+  if(toShow == null)
+    h2 No instance to update
+  else
+    - let snakeid = toShow._id
+    - let snake_color = toShow.snake_color
+    - let snake_breed = toShow.snake_breed
+    - let snake_price = toShow.snake_price
+    - let actionid = "/resource/snakes/" + snakeid
+    script let actionid = "#{actionid}"
+    div.row(class='mb-2')
+    div.mr-1 ID is 
+      span(style="color:red")  #{snakeid}
+    form(id='snakeForm', action= actionid, method="PUT")
+      div.form-group
+      div(class="row g-3 align-items-center")
+        div(class="col-1")
+          label.snakeAttr(for='snake_color',class="col-form-label") snake Colour
+        div(class="col-auto")
+          input#snake_color(type='text', name='snake_color',class="form-control", value=snake_color)
+      div.form-group
+      div(class="row g-3 align-items-center")
+        div(class="col-1")
+          label.snakeAttr(for='snake_breed',class="col-form-label") snake Breed 
+        div(class="col-auto")
+          input#snake_breed(type='text', name='snake_breed',class="form-control", value=snake_breed)
+      div.form-group
+      div(class="row g-3 align-items-center")
+        div(class="col-1")
+          label.snakeAttr(for='snake_price',class="col-form-label") snake cost
+        div(class="col-auto")
+          input#snake_price(type='number', name='snake_price',class="form-control", value=snake_price)
+      input(class="btn btn-danger m-2" type="submit")
+        //- button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+      button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    
+    script.
+      document.forms['snakeForm'].addEventListener('submit', (event) => {
+       event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+       fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+        return resp.text(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+        alert("Update succeded")
+        // TODO handle body
+        }).snakech((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+       });
+      });
