@@ -25,6 +25,19 @@ res.send('NOT IMPLEMENTED: snake create POST');
 //exports.snake_delete = function(req, res) {
 //res.send('NOT IMPLEMENTED: snake delete DELETE ' + req.params.id);
 //};
+// Handle a show one view with id specified by query
+exports.snake_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await snake.findById( req.query.id)
+    res.render('snakedetail',
+    { title: 'snake Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
 // Handle snake update form on PUT.
 exports.snake_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: snake update PUT' + req.params.id);

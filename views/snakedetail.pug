@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  - let snakeid = toShow._id
+  - let snake_color = toShow.snake_color
+  - let snake_breed = toShow.snake_breed
+  - let snake_price = toShow.snake_price
+
+  div
+    div.row
+      div(class='snakeAttr mr-3') snake ID is:
+      div #{snakeid}
+
+    div.row
+      div(class='snakeAttr mr-3') snake_color is:
+      div #{snake_color}
+
+    div.row
+      div(class='snakeAttr mr-3') snake_breed is:
+      div #{snake_breed}
+
+    div.row
+      div(class='snakeAttr mr-3') snake_price is:
+      div #{snake_price}
