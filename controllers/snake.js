@@ -3,15 +3,28 @@ var snake = require('../models/snake');
 exports.snake_list = function(req, res) {
 res.send('NOT IMPLEMENTED: snake list');
 };
+// Handle snake delete on DELETE.
+exports.snake_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await snake.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+    
 
 // Handle snake create on POST.
 exports.snake_create_post = function(req, res) {
 res.send('NOT IMPLEMENTED: snake create POST');
 };
 // Handle snake delete form on DELETE.
-exports.snake_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: snake delete DELETE ' + req.params.id);
-};
+//exports.snake_delete = function(req, res) {
+//res.send('NOT IMPLEMENTED: snake delete DELETE ' + req.params.id);
+//};
 // Handle snake update form on PUT.
 exports.snake_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: snake update PUT' + req.params.id);
