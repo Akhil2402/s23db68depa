@@ -6,3 +6,5 @@ router.get('/', snake_controlers.snake_view_all_Page );
 module.exports = router;
 /* GET detail snake page */
 router.get('/detail', snake_controlers.snake_view_one_Page);
+/* GET create snake page */
+router.get('/create', snake_controlers.snake_create_Page);

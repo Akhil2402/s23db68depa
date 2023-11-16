@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  form(id='snakeForm', action="/resource/snakes", method="POST")
+    div.form-group
+      label.snakeAttr(for='snake_color') snake_color
+      input#snake_color(type='text', name='snake_color')
+    div.form-group
+      label.snakeAttr(for='snake_breed') snake_breed
+      input#snake_breed(type='text', name='snake_breed')
+    div.form-group
+      label.snakeAttr(for='snake_price') snake_price
+      input#snake_price(type='number', name='snake_price')
+    input(type="submit")
+
+  script.
+    document.forms['snakeForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show the user that the form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.text(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeeded");
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error);
+      });
+    });
