@@ -1,12 +1,23 @@
-extends layout
-
 block content
   h1= title
+  - let items = results
+  div(class="container-fluid")
+    div(class="row m-1")
+      each item in results
+        - let destination1 = `dispatch("/snake/update?id=${item._id}")`
+        - let destination2 = `dispatch("/snake/create")`
+        - let destination3 = `dispatch("/snake/detail?id=${item._id}")`
+        - let destination4 = `dispatch("/snake/delete?id=${item._id}")`
+        div(class="row-sm-2 m-1") 
+          | snake color: #{item.snake_color}, 
+          | snake breed: #{item.snake_breed}, 
+          | snake price: #{item.snake_price}
+          //- button.btn(class="btn-primary ml-1", onclick= destination2) Create 
+          button.btn(class="btn-primary ml-1", onclick= destination1) Update 
+          //- button.btn(class="btn-primary ml-1", onclick= destination3) Detail
+          //- button.btn(class="btn-primary ml-1", onclick= destination4) Delete
 
-  .row
-    each snakes in results
-      .col-3 
-        ul
-          li snakes color : #{snakes.snake_color}
-          li snakes breed : #{snakes.snake_breed}
-          li snakes price : #{snakes.snake_price}
+  script.
+    function dispatch(path) {
+      window.location.href = path;
+    }
